@@ -52,12 +52,10 @@ const App = () => {
         // Get files amount
         const fetchedFilesCount = await frajbox.methods.fileCount().call();
         setFilesCount(fetchedFilesCount);
-        console.log("fetched file count", fetchedFilesCount);
-        console.log("file count", filesCount);
         // Load files&sort by the newest
         for (var i = filesCount; i >= 1; i--) {
           const file = await frajbox.methods.files(i).call();
-          setFiles(files => [...files, file]);
+          setFiles((files) => [...files, file]);
         }
       } else {
         window.alert("FrajBox contract not deployed to detected network.");
@@ -80,7 +78,6 @@ const App = () => {
       setBuffer(Buffer(reader.result));
       setType(file.type);
       setName(file.name);
-      console.log("buffer", buffer);
     };
   };
 
@@ -89,7 +86,6 @@ const App = () => {
 
     // Add file to the IPFS
     ipfs.add(buffer, (error, result) => {
-      console.log("IPFS result", result);
       if (error) {
         console.error(error);
         return;
