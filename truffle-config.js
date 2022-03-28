@@ -30,7 +30,7 @@ module.exports = {
         return new HDWalletProvider(
           mnemonic,
           `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`, // Url to an Ethereum Node (Rinkeby)
-          1 // Use the address at index 1, which is my learning purpose wallet
+          1 // Use the address at index 1 to deploy contracts, which is my learning purpose wallet
         );
       },
       network_id: 4,

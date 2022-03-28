@@ -14,6 +14,7 @@ const ipfs = ipfsClient({
 
 const App = () => {
   const [account, setAccount] = useState("");
+  const [manager, setManager] = useState("");
   const [frajbox, setFrajbox] = useState(null);
   const [files, setFiles] = useState([]);
   const [filesCount, setFilesCount] = useState(0);
@@ -47,8 +48,9 @@ const App = () => {
       if (networkData) {
         // Assign contract
         const frajbox = new web3.eth.Contract(FrajBox.abi, networkData.address);
+        const fetchedManager = await frajbox.methods.manager().call();
         setFrajbox(frajbox);
-
+        setManager(fetchedManager);
         // Get files amount
         const fetchedFilesCount = await frajbox.methods.fileCount().call();
         setFilesCount(fetchedFilesCount);
@@ -120,7 +122,13 @@ const App = () => {
           <p>Loading...</p>
         </div>
       ) : (
-        <Main files={files} captureFile={captureFile} uploadFile={uploadFile} />
+        <Main
+          files={files}
+          captureFile={captureFile}
+          uploadFile={uploadFile}
+          user={account}
+          manager={manager}
+        />
       )}
     </div>
   );

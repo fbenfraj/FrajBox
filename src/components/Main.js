@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { convertBytes } from "./helpers";
 import moment from "moment";
 
-const Main = ({ files, captureFile, uploadFile }) => {
+const Main = ({ files, captureFile, uploadFile, user, manager }) => {
   const [description, setDescription] = useState("");
+  const [isManager, setIsManager] = useState(false);
+
+  useEffect(() => {
+    user === manager ? setIsManager(true) : setIsManager(false);
+  }, [manager, user]);
 
   return (
     <div className="container-fluid mt-5 text-center">
@@ -24,6 +29,12 @@ const Main = ({ files, captureFile, uploadFile }) => {
                   <ins>Share File</ins>
                 </b>
               </h2>
+              {!isManager && (
+                <p style={{ color: "red" }}>
+                  Please log in with your <b>manager</b> MetaMask account to
+                  drop a file. :)
+                </p>
+              )}
               <form
                 onSubmit={(event) => {
                   event.preventDefault();
@@ -37,6 +48,7 @@ const Main = ({ files, captureFile, uploadFile }) => {
                     onChange={(e) => setDescription(e.target.value)}
                     className="form-control text-monospace"
                     placeholder="description..."
+                    disabled={!isManager}
                     required
                   />
                 </div>
@@ -44,8 +56,17 @@ const Main = ({ files, captureFile, uploadFile }) => {
                   type="file"
                   onChange={captureFile}
                   className="text-white text-monospace"
+                  disabled={!isManager}
                 />
-                <button type="submit" className="btn-primary btn-block">
+                <button
+                  type="submit"
+                  className={
+                    "btn-" +
+                    (isManager ? "primary" : "secondary") +
+                    " btn-block"
+                  }
+                  disabled={!isManager}
+                >
                   <b>Upload!</b>
                 </button>
               </form>
