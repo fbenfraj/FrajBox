@@ -60,7 +60,9 @@ const App = () => {
           setFiles((files) => [...files, file]);
         }
       } else {
-        window.alert("FrajBox contract not deployed to detected network.");
+        window.alert(
+          "FrajBox contract not deployed to detected network. Please switch to the Rinkeby network (Ethereum Testnet)."
+        );
       }
     };
 

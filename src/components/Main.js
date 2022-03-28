@@ -19,6 +19,27 @@ const Main = ({ files, captureFile, uploadFile, user, manager }) => {
           style={{ maxWidth: "1024px" }}
         >
           <div className="content">
+            <div
+              className="mx-auto"
+              style={{ fontSize: "20px", lineHeight: "30px" }}
+            >
+              <a href="https://github.com/fbenfraj/FrajBox" target="_blank">
+                FrajBox
+              </a>{" "}
+              is a personnal decentralized file storage platform. <br /> It is
+              build with React and Solidity.
+              <br />
+              <p>
+                The files below are stored using IPFS. To learn more about IPFS{" "}
+                <a href="https://ipfs.io/" target="_blank">
+                  click here
+                </a>
+                .
+              </p>
+              <br /> This project is deployed on the Rinkeby network (Ethereum
+              Testnet) and is only for demonstration purpose.
+              <br />
+            </div>
             <p>&nbsp;</p>
             <div
               className="card mb-3 mx-auto bg-dark"
