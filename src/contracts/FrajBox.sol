@@ -1,6 +1,7 @@
 pragma solidity ^0.5.0;
 
 contract FrajBox {
+    address public manager;
     string public name = "FrajBox";
     uint256 public fileCount = 0;
     mapping(uint256 => File) public files;
@@ -29,7 +30,9 @@ contract FrajBox {
         address payable uploader
     );
 
-    constructor() public {}
+    constructor() public {
+        manager = msg.sender;
+    }
 
     function uploadFile(
         string memory _fileHash,
