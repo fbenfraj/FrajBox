@@ -41,6 +41,11 @@ contract FrajBox {
         string memory _fileName,
         string memory _fileDescription
     ) public {
+        // Make sure you're the manager
+        require(
+            manager == msg.sender,
+            "Only the manager is allowed to drop files."
+        );
         // Make sure the file hash exists
         require(bytes(_fileHash).length > 0);
         // Make sure file type exists

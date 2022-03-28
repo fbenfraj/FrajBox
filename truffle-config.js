@@ -2,7 +2,7 @@ require("babel-register");
 require("babel-polyfill");
 require("dotenv").config();
 
-const HDWalletProvider = require("truffle-hdwallet-provider-privkey");
+const HDWalletProviderPK = require("truffle-hdwallet-provider-privkey");
 const HDWalletProvider = require("truffle-hdwallet-provider");
 const privateKeys = process.env.PRIVATE_KEYS || "";
 var mnemonic = process.env.RINKEBY_MNEMONIC;
@@ -16,7 +16,7 @@ module.exports = {
     },
     ropsten: {
       provider: function () {
-        return new HDWalletProvider(
+        return new HDWalletProviderPK(
           privateKeys.split(","), // Array of account private keys
           `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}` // Url to an Ethereum Node (Ropsten)
         );
@@ -29,7 +29,8 @@ module.exports = {
       provider: function () {
         return new HDWalletProvider(
           mnemonic,
-          `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}` // Url to an Ethereum Node (Rinkeby)
+          `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`, // Url to an Ethereum Node (Rinkeby)
+          1 // Use the address at index 1, which is my learning purpose wallet
         );
       },
       network_id: 4,

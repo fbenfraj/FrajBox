@@ -1,5 +1,5 @@
 const FrajBox = artifacts.require("FrajBox");
 
-module.exports = function(deployer) {
-	deployer.deploy(FrajBox);
+module.exports = function (deployer) {
+  deployer.deploy(FrajBox);
 };
