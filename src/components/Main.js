@@ -23,7 +23,11 @@ const Main = ({ files, captureFile, uploadFile, user, manager }) => {
               className="mx-auto"
               style={{ fontSize: "20px", lineHeight: "30px" }}
             >
-              <a href="https://github.com/fbenfraj/FrajBox" target="_blank">
+              <a
+                href="https://github.com/fbenfraj/FrajBox"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 FrajBox
               </a>{" "}
               is a personnal decentralized file storage platform. <br /> It is
@@ -31,7 +35,11 @@ const Main = ({ files, captureFile, uploadFile, user, manager }) => {
               <br />
               <p>
                 The files below are stored using IPFS. To learn more about IPFS{" "}
-                <a href="https://ipfs.io/" target="_blank">
+                <a
+                  href="https://ipfs.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   click here
                 </a>
                 .
